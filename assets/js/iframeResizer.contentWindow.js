@@ -314,7 +314,14 @@
     manageTriggerEvent({ method: method, eventType: 'Transition Start', eventNames: ['transitionstart', 'webkitTransitionStart', 'MSTransitionStart', 'oTransitionStart', 'otransitionstart'] });
     manageTriggerEvent({ method: method, eventType: 'Transition Iteration', eventNames: ['transitioniteration', 'webkitTransitionIteration', 'MSTransitionIteration', 'oTransitionIteration', 'otransitioniteration'] });
     manageTriggerEvent({ method: method, eventType: 'Transition End', eventNames: ['transitionend', 'webkitTransitionEnd', 'MSTransitionEnd', 'oTransitionEnd', 'otransitionend'] });
-    manageTriggerEvent({ method: method, eventType: 'User interaction', eventNames: ['click', 'input', 'touchstart', 'touchend', 'touchcancel', 'scroll', 'mouseover'] });
+    manageTriggerEvent({ method: method, eventType: 'User interaction', eventName: 'click' });
+    manageTriggerEvent({ method: method, eventType: 'User interaction', eventName: 'input' });
+    manageTriggerEvent({ method: method, eventType: 'User interaction', eventName: 'touchstart' });
+    manageTriggerEvent({ method: method, eventType: 'User interaction', eventName: 'touchend' });
+    manageTriggerEvent({ method: method, eventType: 'User interaction', eventName: 'touchcancel' });
+    manageTriggerEvent({ method: method, eventType: 'User interaction', eventName: 'scroll' });
+    manageTriggerEvent({ method: method, eventType: 'User interaction', eventName: 'mouseover' });
+
     if ('child' === resizeFrom) {
       manageTriggerEvent({ method: method, eventType: 'IFrame Resized', eventName: 'resize' });
     }
@@ -1109,4 +1116,22 @@
 
   addEventListener(window, 'message', receiver);
   chkLateLoaded();
+
+  // TEST CODE START //
+
+  //Create test hooks
+
+  function mockMsgListener(msgObject) {
+    receiver(msgObject);
+    return win;
+  }
+
+  win = {};
+
+  removeEventListener(window, 'message', receiver);
+
+  define([], function () { return mockMsgListener; });
+
+  // TEST CODE END //
+
 })();
