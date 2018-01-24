@@ -409,7 +409,7 @@
         var jumpPosition = getElementPosition(target);
 
         log('Moving to in page link (#'+hash+') at x: '+jumpPosition.x+' y: '+jumpPosition.y);
-        sendMsg(jumpPosition.y, jumpPosition.x, 'scrollToOffset'); // X&Y reversed at sendMsg uses height/width
+        // sendMsg(jumpPosition.y, jumpPosition.x, 'scrollToOffset'); // X&Y reversed at sendMsg uses height/width
       }
 
       var
@@ -421,7 +421,7 @@
         jumpToTarget(target);
       } else {
         log('In page link (#' + hash + ') not found in iFrame, so sending to parent');
-        sendMsg(0,0,'inPageLink','#'+hash);
+        // sendMsg(0,0,'inPageLink','#'+hash);
       }
     }
 
@@ -498,7 +498,7 @@
       },
 
       close: function closeF() {
-        sendMsg(0,0,'close');
+        // sendMsg(0,0,'close');
         teardown();
       },
 
@@ -509,10 +509,10 @@
       getPageInfo: function getPageInfoF(callback) {
         if ('function' === typeof callback) {
           pageInfoCallback = callback;
-          sendMsg(0,0,'pageInfo');
+          // sendMsg(0,0,'pageInfo');
         } else {
           pageInfoCallback = function() {};
-          sendMsg(0,0,'pageInfoStop');
+          // sendMsg(0,0,'pageInfoStop');
         }
       },
 
@@ -525,15 +525,15 @@
       },
 
       scrollTo: function scrollToF(x,y) {
-        sendMsg(y,x,'scrollTo'); // X&Y reversed at sendMsg uses height/width
+        // sendMsg(y,x,'scrollTo'); // X&Y reversed at sendMsg uses height/width
       },
 
       scrollToOffset: function scrollToF(x,y) {
-        sendMsg(y,x,'scrollToOffset'); // X&Y reversed at sendMsg uses height/width
+        // sendMsg(y,x,'scrollToOffset'); // X&Y reversed at sendMsg uses height/width
       },
 
       sendMessage: function sendMessageF(msg,targetOrigin) {
-        sendMsg(0,0,'message',JSON.stringify(msg),targetOrigin);
+        // sendMsg(0,0,'message',JSON.stringify(msg),targetOrigin);
       },
 
       setHeightCalculationMethod: function setHeightCalculationMethodF(heightCalculationMethod) {
@@ -868,7 +868,7 @@
       height = currentHeight;
       width  = currentWidth;
 
-      sendMsg(height,width,triggerEvent);
+      // sendMsg(height,width,triggerEvent);
     }
 
     function isSizeChangeDetected() {
@@ -957,7 +957,7 @@
     height = getHeight[heightCalcMode]();
     width  = getWidth[widthCalcMode]();
 
-    sendMsg(height,width,triggerEvent);
+    // sendMsg(height,width,triggerEvent);
   }
 
   function resetIFrame(triggerEventDesc) {
