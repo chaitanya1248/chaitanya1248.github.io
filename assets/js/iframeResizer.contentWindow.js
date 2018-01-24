@@ -302,8 +302,9 @@
     manageTriggerEvent({method:method, eventType: 'Animation Iteration',       eventNames: ['animationiteration','webkitAnimationIteration'] });
     manageTriggerEvent({method:method, eventType: 'Animation End',             eventNames: ['animationend','webkitAnimationEnd'] });
     manageTriggerEvent({method:method, eventType: 'Input',                     eventName:  'input' });
-    manageTriggerEvent({method:method, eventType: 'Mouse Up',                  eventName:  'mouseup' });
-    manageTriggerEvent({method:method, eventType: 'Mouse Down',                eventName:  'mousedown' });
+    // manageTriggerEvent({method:method, eventType: 'Mouse Up',                  eventName:  'mouseup' });
+    // manageTriggerEvent({method:method, eventType: 'Mouse Down',                eventName:  'mousedown' });
+    manageTriggerEvent({method:method, eventType: 'Mouse Click',                eventName:  'click' });
     manageTriggerEvent({method:method, eventType: 'Orientation Change',        eventName:  'orientationchange' });
     manageTriggerEvent({method:method, eventType: 'Print',                     eventName:  ['afterprint', 'beforeprint'] });
     manageTriggerEvent({method:method, eventType: 'Ready State Change',        eventName:  'readystatechange' });
