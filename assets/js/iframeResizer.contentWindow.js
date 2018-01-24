@@ -302,8 +302,8 @@
     manageTriggerEvent({ method: method, eventType: 'Animation Iteration', eventNames: ['animationiteration', 'webkitAnimationIteration'] });
     manageTriggerEvent({ method: method, eventType: 'Animation End', eventNames: ['animationend', 'webkitAnimationEnd'] });
     manageTriggerEvent({ method: method, eventType: 'Input', eventName: 'input' });
-    // manageTriggerEvent({method:method, eventType: 'Mouse Up',                  eventName:  'mouseup' });
-    // manageTriggerEvent({method:method, eventType: 'Mouse Down',                eventName:  'mousedown' });
+    manageTriggerEvent({ method: method, eventType: 'Mouse Up', eventName: 'mouseup' });
+    manageTriggerEvent({ method: method, eventType: 'Mouse Down', eventName: 'mousedown' });
     manageTriggerEvent({ method: method, eventType: 'Mouse Click', eventName: 'click' });
     manageTriggerEvent({ method: method, eventType: 'Orientation Change', eventName: 'orientationchange' });
     manageTriggerEvent({ method: method, eventType: 'Print', eventName: ['afterprint', 'beforeprint'] });
@@ -314,6 +314,7 @@
     manageTriggerEvent({ method: method, eventType: 'Transition Start', eventNames: ['transitionstart', 'webkitTransitionStart', 'MSTransitionStart', 'oTransitionStart', 'otransitionstart'] });
     manageTriggerEvent({ method: method, eventType: 'Transition Iteration', eventNames: ['transitioniteration', 'webkitTransitionIteration', 'MSTransitionIteration', 'oTransitionIteration', 'otransitioniteration'] });
     manageTriggerEvent({ method: method, eventType: 'Transition End', eventNames: ['transitionend', 'webkitTransitionEnd', 'MSTransitionEnd', 'oTransitionEnd', 'otransitionend'] });
+    manageTriggerEvent({ method: method, eventType: 'User interaction', eventNames: ['mouseup', 'mousedown', 'click', 'input', 'touchstart', 'touchend', 'touchcancel', 'scroll', 'mouseover'] });
     if ('child' === resizeFrom) {
       manageTriggerEvent({ method: method, eventType: 'IFrame Resized', eventName: 'resize' });
     }
@@ -920,7 +921,9 @@
     function recordTrigger() {
       if (!(triggerEvent in { 'reset': 1, 'resetPage': 1, 'init': 1 })) {
         log('Trigger event: ' + triggerEventDesc);
-        window.parentIFrame.sendMessage('Event caused: ' + triggerEventDesc);
+        if ('User interaction' === triggerEventDesc) {
+          window.parentIFrame.sendMessage('Event occured: ' + triggerEventDesc + ' Event type: ' + triggerEvent);
+        }
       }
     }
 
@@ -1106,5 +1109,22 @@
 
   addEventListener(window, 'message', receiver);
   chkLateLoaded();
+
+  // TEST CODE START //
+
+  //Create test hooks
+
+  function mockMsgListener(msgObject) {
+    receiver(msgObject);
+    return win;
+  }
+
+  win = {};
+
+  removeEventListener(window, 'message', receiver);
+
+  define([], function () { return mockMsgListener; });
+
+  // TEST CODE END //
 
 })();
