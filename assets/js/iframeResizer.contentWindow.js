@@ -921,6 +921,7 @@
     function recordTrigger() {
       if (!(triggerEvent in {'reset':1,'resetPage':1,'init':1})) {
         log( 'Trigger event: ' + triggerEventDesc );
+        window.parentIFrame.sendMessage('event caused '+triggerEvent);
         sendMsg(0,0,triggerEvent,'event caused');
       }
     }
