@@ -320,7 +320,8 @@
     manageTriggerEvent({ method: method, eventType: 'User interaction', eventName: 'touchend' });
     manageTriggerEvent({ method: method, eventType: 'User interaction', eventName: 'touchcancel' });
     manageTriggerEvent({ method: method, eventType: 'User interaction', eventName: 'scroll' });
-    manageTriggerEvent({ method: method, eventType: 'User interaction', eventName: 'mouseover' });
+    manageTriggerEvent({ method: method, eventType: 'User interaction', eventName: 'mouseenter' });
+    manageTriggerEvent({ method: method, eventType: 'User interaction', eventName: 'mouseleave' });
 
     if ('child' === resizeFrom) {
       manageTriggerEvent({ method: method, eventType: 'IFrame Resized', eventName: 'resize' });
