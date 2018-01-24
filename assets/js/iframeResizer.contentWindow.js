@@ -918,7 +918,8 @@
   function sendSize(triggerEvent, triggerEventDesc, customHeight, customWidth) {
     function recordTrigger() {
       if (!(triggerEvent in {'reset':1,'resetPage':1,'init':1})) {
-        log( 'Trigger event: ' + triggerEventDesc );
+        // log( 'Trigger event: ' + triggerEventDesc );
+        target.postMessage( 'Event happened on iframe', targetOrigin);
       }
     }
 
