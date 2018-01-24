@@ -920,7 +920,7 @@
       if (!(triggerEvent in {'reset':1,'resetPage':1,'init':1})) {
         // log( 'Trigger event: ' + triggerEventDesc );
         // sendToParent('######!!!!!!!TOUCH BANKING:Some event happened on iframe !!!!!!######');
-        sendMsg(0,0,'######!!!!!!!TOUCH BANKING:Some event happened on iframe !!!!!!######');
+        sendMsg(0,0,triggerEvent,'######!!!!!!!TOUCH BANKING:Some event happened on iframe !!!!!!######');
       }
     }
 
