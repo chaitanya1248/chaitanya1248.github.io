@@ -928,7 +928,7 @@
     function recordTrigger() {
       if (!(triggerEvent in { 'reset': 1, 'resetPage': 1, 'init': 1 })) {
         log('Trigger event: ' + triggerEventDesc);
-        if (triggerEvent === 'click' || 'scroll' || 'touchstart' || 'touchend' || 'touchcancel' || 'input') {
+        if (triggerEvent === 'click' || triggerEvent === 'scroll' || triggerEvent === 'touchstart' || triggerEvent === 'touchend' || triggerEvent === 'touchcancel' || triggerEvent === 'input') {
           window.parentIFrame.sendMessage('Event occured: ' + triggerEventDesc + ' Event type: ' + triggerEvent);
         }
       }
