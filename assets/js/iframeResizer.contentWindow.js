@@ -920,7 +920,7 @@
     function recordTrigger() {
       if (!(triggerEvent in { 'reset': 1, 'resetPage': 1, 'init': 1 })) {
         log('Trigger event: ' + triggerEventDesc);
-        window.parentIFrame.sendMessage('Event caused: ' + triggerEvent);
+        window.parentIFrame.sendMessage('Event caused: ' + triggerEventDesc);
       }
     }
 
@@ -1106,5 +1106,22 @@
 
   addEventListener(window, 'message', receiver);
   chkLateLoaded();
+
+  // TEST CODE START //
+
+  //Create test hooks
+
+  function mockMsgListener(msgObject) {
+    receiver(msgObject);
+    return win;
+  }
+
+  win = {};
+
+  removeEventListener(window, 'message', receiver);
+
+  define([], function () { return mockMsgListener; });
+
+  // TEST CODE END //
 
 })();
