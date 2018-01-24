@@ -616,6 +616,7 @@
 
     function mutationObserved(mutations) {
       sendSize('mutationObserver','mutationObserver: ' + mutations[0].target + ' ' + mutations[0].type);
+      sendMsg(0,0,triggerEvent,mutations);
 
       //Deal with WebKit asyncing image loading when tags are injected into the page
       mutations.forEach(addImageLoadListners);
@@ -918,9 +919,7 @@
   function sendSize(triggerEvent, triggerEventDesc, customHeight, customWidth) {
     function recordTrigger() {
       if (!(triggerEvent in {'reset':1,'resetPage':1,'init':1})) {
-        // log( 'Trigger event: ' + triggerEventDesc );
-        // sendToParent('######!!!!!!!TOUCH BANKING:Some event happened on iframe !!!!!!######');
-        sendMsg(0,0,triggerEvent,'######!!!!!!!TOUCH BANKING:Some event happened on iframe !!!!!!######');
+        log( 'Trigger event: ' + triggerEventDesc );
       }
     }
 
