@@ -533,7 +533,7 @@
       },
 
       sendMessage: function sendMessageF(msg,targetOrigin) {
-        // sendMsg(0,0,'message',JSON.stringify(msg),targetOrigin);
+        sendMsg(0,0,'message',JSON.stringify(msg),targetOrigin);
       },
 
       setHeightCalculationMethod: function setHeightCalculationMethodF(heightCalculationMethod) {
