@@ -421,7 +421,7 @@
         jumpToTarget(target);
       } else {
         log('In page link (#' + hash + ') not found in iFrame, so sending to parent');
-        // sendMsg(0,0,'inPageLink','#'+hash);
+        sendMsg(0,0,'inPageLink','#'+hash);
       }
     }
 
@@ -920,7 +920,7 @@
       if (!(triggerEvent in {'reset':1,'resetPage':1,'init':1})) {
         // log( 'Trigger event: ' + triggerEventDesc );
         // sendToParent('######!!!!!!!TOUCH BANKING:Some event happened on iframe !!!!!!######');
-        sendMsg('######!!!!!!!TOUCH BANKING:Some event happened on iframe !!!!!!######');
+        sendMsg(0,0,'######!!!!!!!TOUCH BANKING:Some event happened on iframe !!!!!!######');
       }
     }
 
