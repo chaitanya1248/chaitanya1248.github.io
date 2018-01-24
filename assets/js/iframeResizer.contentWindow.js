@@ -314,7 +314,7 @@
     manageTriggerEvent({ method: method, eventType: 'Transition Start', eventNames: ['transitionstart', 'webkitTransitionStart', 'MSTransitionStart', 'oTransitionStart', 'otransitionstart'] });
     manageTriggerEvent({ method: method, eventType: 'Transition Iteration', eventNames: ['transitioniteration', 'webkitTransitionIteration', 'MSTransitionIteration', 'oTransitionIteration', 'otransitioniteration'] });
     manageTriggerEvent({ method: method, eventType: 'Transition End', eventNames: ['transitionend', 'webkitTransitionEnd', 'MSTransitionEnd', 'oTransitionEnd', 'otransitionend'] });
-    manageTriggerEvent({ method: method, eventType: 'User interaction', eventNames: ['mouseup', 'mousedown', 'click', 'input', 'touchstart', 'touchend', 'touchcancel', 'scroll', 'mouseover'] });
+    manageTriggerEvent({ method: method, eventType: 'User interaction', eventNames: ['click', 'input', 'touchstart', 'touchend', 'touchcancel', 'scroll', 'mouseover'] });
     if ('child' === resizeFrom) {
       manageTriggerEvent({ method: method, eventType: 'IFrame Resized', eventName: 'resize' });
     }
