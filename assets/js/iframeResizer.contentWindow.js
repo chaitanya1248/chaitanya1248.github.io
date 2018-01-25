@@ -928,7 +928,9 @@
     function recordTrigger() {
       if (!(triggerEvent in { 'reset': 1, 'resetPage': 1, 'init': 1 })) {
         log('Trigger event: ' + triggerEventDesc);
+        if ('resizeParent' !== triggerEvent) {
           window.parentIFrame.sendMessage('Event occured: ' + triggerEventDesc + ' Event type: ' + triggerEvent);
+        }
       }
     }
 
