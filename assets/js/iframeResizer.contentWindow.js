@@ -298,13 +298,13 @@
   }
 
   function manageEventListeners(method) {
-    manageTriggerEvent({ method: method, eventType: 'User interaction', eventName: 'click' });
-    manageTriggerEvent({ method: method, eventType: 'User interaction', eventName: 'input' });
-    manageTriggerEvent({ method: method, eventType: 'User interaction', eventName: 'touchstart' });
-    manageTriggerEvent({ method: method, eventType: 'User interaction', eventName: 'touchend' });
-    manageTriggerEvent({ method: method, eventType: 'User interaction', eventName: 'touchcancel' });
-    manageTriggerEvent({ method: method, eventType: 'User interaction', eventName: 'scroll' });
-    manageTriggerEvent({ method: method, eventType: 'User interaction', eventName: 'mouseover' });
+    manageTriggerEvent({ method: method, eventType: 'User clicked', eventName: 'click' });
+    manageTriggerEvent({ method: method, eventType: 'User input', eventName: 'input' });
+    manageTriggerEvent({ method: method, eventType: 'User touch start', eventName: 'touchstart' });
+    manageTriggerEvent({ method: method, eventType: 'User touch end', eventName: 'touchend' });
+    manageTriggerEvent({ method: method, eventType: 'User touch cancel', eventName: 'touchcancel' });
+    manageTriggerEvent({ method: method, eventType: 'User scroll', eventName: 'scroll' });
+    manageTriggerEvent({ method: method, eventType: 'User mouseover', eventName: 'mouseover' });
     manageTriggerEvent({ method: method, eventType: 'Animation Start', eventNames: ['animationstart', 'webkitAnimationStart'] });
     manageTriggerEvent({ method: method, eventType: 'Animation Iteration', eventNames: ['animationiteration', 'webkitAnimationIteration'] });
     manageTriggerEvent({ method: method, eventType: 'Animation End', eventNames: ['animationend', 'webkitAnimationEnd'] });
@@ -928,9 +928,9 @@
     function recordTrigger() {
       if (!(triggerEvent in { 'reset': 1, 'resetPage': 1, 'init': 1 })) {
         log('Trigger event: ' + triggerEventDesc);
-        if (triggerEvent === 'click' || triggerEvent === 'scroll' || triggerEvent === 'touchstart' || triggerEvent === 'touchend' || triggerEvent === 'touchcancel' || triggerEvent === 'input') {
+        // if (triggerEvent === 'click' || triggerEvent === 'scroll' || triggerEvent === 'touchstart' || triggerEvent === 'touchend' || triggerEvent === 'touchcancel' || triggerEvent === 'input') {
           window.parentIFrame.sendMessage('Event occured: ' + triggerEventDesc + ' Event type: ' + triggerEvent);
-        }
+        // }
       }
     }
 
